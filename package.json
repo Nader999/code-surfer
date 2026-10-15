@@ -1,0 +1,111 @@
+{
+  "name": "subway-player",
+  "displayName": "Subway Player",
+  "description": "Un lecteur vidéo en boucle à côté de ton code, façon vidéos split screen avec du gameplay Subway Surfers pour garder la concentration.",
+  "version": "0.1.0",
+  "publisher": "nader",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "subway surfers",
+    "focus",
+    "gameplay",
+    "video",
+    "split screen"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "subwayPlayer.open",
+        "title": "Ouvrir le player",
+        "category": "Subway Player"
+      },
+      {
+        "command": "subwayPlayer.close",
+        "title": "Fermer le player",
+        "category": "Subway Player"
+      },
+      {
+        "command": "subwayPlayer.toggle",
+        "title": "Afficher / masquer le player",
+        "category": "Subway Player"
+      },
+      {
+        "command": "subwayPlayer.chooseVideo",
+        "title": "Choisir une vidéo…",
+        "category": "Subway Player"
+      },
+      {
+        "command": "subwayPlayer.next",
+        "title": "Vidéo suivante",
+        "category": "Subway Player"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "subwayPlayer.toggle",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s"
+      }
+    ],
+    "configuration": {
+      "title": "Subway Player",
+      "properties": {
+        "subwayPlayer.videoSource": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Vidéo à lire en boucle : un fichier local (`.mp4`, `.webm`…), un **dossier** de vidéos (lecture enchaînée au hasard), une URL directe vers une vidéo, ou un lien YouTube."
+        },
+        "subwayPlayer.muted": {
+          "type": "boolean",
+          "default": true,
+          "description": "Lire la vidéo sans le son."
+        },
+        "subwayPlayer.playbackRate": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0.25,
+          "maximum": 4,
+          "description": "Vitesse de lecture."
+        },
+        "subwayPlayer.showControls": {
+          "type": "boolean",
+          "default": false,
+          "description": "Afficher les contrôles natifs du lecteur vidéo."
+        },
+        "subwayPlayer.openOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Ouvrir automatiquement le player au démarrage de l'éditeur."
+        },
+        "subwayPlayer.showStatusBarButton": {
+          "type": "boolean",
+          "default": true,
+          "description": "Afficher le bouton du player dans la barre d'état."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package --no-dependencies --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "@types/vscode": "~1.80.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.4.0"
+  },
+  "icon": "media/icon.png"
+}
