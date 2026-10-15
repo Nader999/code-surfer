@@ -1,8 +1,8 @@
 {
   "name": "subway-player",
   "displayName": "Subway Player",
-  "description": "Un lecteur vidéo en boucle à côté de ton code, façon vidéos split screen avec du gameplay Subway Surfers pour garder la concentration.",
-  "version": "0.1.0",
+  "description": "Un lecteur vidéo en boucle à côté de ton code, façon vidéos split screen : Subway Surfers, parkour Minecraft, sable cinétique… ou un stream Twitch.",
+  "version": "0.2.0",
   "publisher": "nader",
   "license": "MIT",
   "engines": {
@@ -13,10 +13,12 @@
   ],
   "keywords": [
     "subway surfers",
+    "minecraft parkour",
     "focus",
     "gameplay",
     "video",
-    "split screen"
+    "split screen",
+    "twitch"
   ],
   "main": "./out/extension.js",
   "activationEvents": [
@@ -40,8 +42,23 @@
         "category": "Subway Player"
       },
       {
+        "command": "subwayPlayer.chooseCategory",
+        "title": "Choisir une catégorie…",
+        "category": "Subway Player"
+      },
+      {
+        "command": "subwayPlayer.nextCategory",
+        "title": "Catégorie suivante",
+        "category": "Subway Player"
+      },
+      {
         "command": "subwayPlayer.chooseVideo",
-        "title": "Choisir une vidéo…",
+        "title": "Changer la vidéo de la catégorie…",
+        "category": "Subway Player"
+      },
+      {
+        "command": "subwayPlayer.watchTwitch",
+        "title": "Regarder un stream Twitch…",
         "category": "Subway Player"
       },
       {
@@ -55,20 +72,49 @@
         "command": "subwayPlayer.toggle",
         "key": "ctrl+alt+s",
         "mac": "cmd+alt+s"
+      },
+      {
+        "command": "subwayPlayer.nextCategory",
+        "key": "ctrl+alt+n",
+        "mac": "cmd+alt+n"
       }
     ],
     "configuration": {
       "title": "Subway Player",
       "properties": {
+        "subwayPlayer.categories": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "default": {
+            "Subway Surfers": "",
+            "Parkour Minecraft": "",
+            "Méga rampes GTA": "",
+            "Sable cinétique ASMR": "",
+            "Slime et savon satisfaisants": "",
+            "Presse hydraulique": "",
+            "Geometry Dash": "",
+            "Trackmania": "",
+            "Stream Twitch": ""
+          },
+          "markdownDescription": "Catégories de vidéos. Pour chacune, une source : un fichier local (`.mp4`, `.webm`…), un **dossier** (vidéos enchaînées au hasard), une URL directe, un lien YouTube ou un lien Twitch (`https://twitch.tv/chaine`). Ajoute tes propres catégories avec un nouveau nom."
+        },
+        "subwayPlayer.activeCategory": {
+          "type": "string",
+          "default": "Subway Surfers",
+          "description": "Catégorie affichée dans le player."
+        },
         "subwayPlayer.videoSource": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Vidéo à lire en boucle : un fichier local (`.mp4`, `.webm`…), un **dossier** de vidéos (lecture enchaînée au hasard), une URL directe vers une vidéo, ou un lien YouTube."
+          "deprecationMessage": "Remplacé par subwayPlayer.categories (la valeur est déplacée automatiquement dans la catégorie Subway Surfers).",
+          "description": "Ancien réglage de la v0.1."
         },
         "subwayPlayer.muted": {
           "type": "boolean",
           "default": true,
-          "description": "Lire la vidéo sans le son."
+          "description": "Lire sans le son (clique sur 🔇 dans le player pour l'activer, pratique pour un stream Twitch)."
         },
         "subwayPlayer.playbackRate": {
           "type": "number",
@@ -96,7 +142,7 @@
     }
   },
   "scripts": {
-    "compile": "tsc -p ./",
+    "compile": "tsc -p ./ && node scripts/copy-vendor.js",
     "watch": "tsc -watch -p ./",
     "vscode:prepublish": "npm run compile",
     "package": "vsce package --no-dependencies --allow-missing-repository"
@@ -105,6 +151,7 @@
     "@types/node": "^18.19.0",
     "@types/vscode": "~1.80.0",
     "@vscode/vsce": "^3.0.0",
+    "hls.js": "^1.7.3",
     "typescript": "^5.4.0"
   },
   "icon": "media/icon.png"
