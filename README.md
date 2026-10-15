@@ -128,14 +128,9 @@ Pour tester sans installer : ouvre le dossier dans VS Code ou Cursor et lance **
 ### Publier une nouvelle version
 
 1. Augmente `version` dans `package.json` et note les changements dans `CHANGELOG.md`.
-2. Crée un tag et pousse-le :
+2. Pousse sur la branche `main`.
 
-```bash
-git tag v0.3.0
-git push origin v0.3.0
-```
-
-GitHub Actions compile l'extension et publie automatiquement une Release avec le `.vsix` en pièce jointe.
+GitHub Actions compile l'extension et, si cette version n'a pas encore de Release, en publie une avec le `.vsix` en pièce jointe.
 
 ## Licence
 
