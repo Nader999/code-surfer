@@ -145,7 +145,7 @@
     "compile": "tsc -p ./ && node scripts/copy-vendor.js",
     "watch": "tsc -watch -p ./",
     "vscode:prepublish": "npm run compile",
-    "package": "vsce package --no-dependencies --allow-missing-repository"
+    "package": "vsce package --no-dependencies"
   },
   "devDependencies": {
     "@types/node": "^18.19.0",
@@ -154,5 +154,13 @@
     "hls.js": "^1.7.3",
     "typescript": "^5.4.0"
   },
-  "icon": "media/icon.png"
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nader999/subway-player.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nader999/subway-player/issues"
+  },
+  "homepage": "https://github.com/Nader999/subway-player#readme"
 }

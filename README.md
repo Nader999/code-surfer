@@ -2,6 +2,47 @@
 
 Un lecteur vidéo qui tourne en boucle à côté de ton code, comme les vidéos « split screen » avec du gameplay Subway Surfers en bas de l'écran. Ça marche dans VS Code et dans Cursor.
 
+![VS Code](https://img.shields.io/badge/VS%20Code-1.80%2B-007ACC) ![Cursor](https://img.shields.io/badge/Cursor-compatible-black) [![Dernière version](https://img.shields.io/github/v/release/Nader999/subway-player?label=t%C3%A9l%C3%A9charger)](https://github.com/Nader999/subway-player/releases/latest)
+
+## Installation
+
+L'extension n'est pas (encore) sur le marketplace : elle s'installe à partir d'un fichier `.vsix`, en moins d'une minute.
+
+### 1. Télécharger
+
+Va sur la page [**Releases**](https://github.com/Nader999/subway-player/releases/latest) et télécharge le fichier `subway-player-x.y.z.vsix` dans la section **Assets**.
+
+### 2. Installer dans VS Code
+
+1. Ouvre la vue **Extensions** (`Ctrl+Shift+X`, ou `Cmd+Shift+X` sur Mac).
+2. Clique sur le menu **`…`** en haut de la vue, puis sur **Install from VSIX…**.
+3. Choisis le fichier `.vsix` que tu viens de télécharger.
+
+Ou en ligne de commande :
+
+```bash
+code --install-extension subway-player-x.y.z.vsix
+```
+
+### 2 bis. Installer dans Cursor
+
+Même principe : vue **Extensions** (`Ctrl+Shift+X` / `Cmd+Shift+X`), menu **`…`**, puis **Install from VSIX…**. Tu peux aussi glisser-déposer le fichier `.vsix` dans la vue Extensions.
+
+Ou en ligne de commande :
+
+```bash
+cursor --install-extension subway-player-x.y.z.vsix
+```
+
+### 3. Vérifier
+
+Un bouton **▶ Subway** apparaît en bas à droite, dans la barre d'état. S'il n'apparaît pas, recharge la fenêtre (palette de commandes, puis **Developer: Reload Window**).
+
+### Mettre à jour / désinstaller
+
+- **Mettre à jour** : télécharge le nouveau `.vsix` depuis les Releases et installe-le de la même façon, il remplace l'ancien.
+- **Désinstaller** : vue Extensions, clic droit sur **Subway Player**, puis **Uninstall**.
+
 ## Utilisation
 
 1. Ouvre la palette de commandes (`Ctrl+Shift+P` / `Cmd+Shift+P`) et lance **Subway Player: Choisir une catégorie…**
@@ -72,12 +113,30 @@ Formats : le `.webm` (VP9) et le `.mp4` (H.264) sont les plus sûrs. Les liens Y
 
 ## Développement
 
+Prérequis : Node.js 18 ou plus.
+
 ```bash
+git clone https://github.com/Nader999/subway-player.git
+cd subway-player
 npm install
 npm run compile      # ou npm run watch
 npm run package      # produit subway-player-<version>.vsix
 ```
 
-Pour tester : ouvre le dossier dans VS Code et lance **Run Extension** (F5).
+Pour tester sans installer : ouvre le dossier dans VS Code ou Cursor et lance **Run Extension** (`F5`). Une nouvelle fenêtre s'ouvre avec l'extension chargée.
 
-Pour installer le `.vsix` : `code --install-extension subway-player-0.2.0.vsix`, ou `cursor --install-extension ...`, ou depuis la vue Extensions, menu `…` puis **Install from VSIX…**.
+### Publier une nouvelle version
+
+1. Augmente `version` dans `package.json` et note les changements dans `CHANGELOG.md`.
+2. Crée un tag et pousse-le :
+
+```bash
+git tag v0.3.0
+git push origin v0.3.0
+```
+
+GitHub Actions compile l'extension et publie automatiquement une Release avec le `.vsix` en pièce jointe.
+
+## Licence
+
+MIT
