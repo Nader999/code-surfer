@@ -2,7 +2,7 @@
 
 Un lecteur vidéo qui tourne en boucle à côté de ton code, comme les vidéos « split screen » avec du gameplay Subway Surfers en bas de l'écran. Ça marche dans VS Code et dans Cursor.
 
-![VS Code](https://img.shields.io/badge/VS%20Code-1.80%2B-007ACC) ![Cursor](https://img.shields.io/badge/Cursor-compatible-black) [![Dernière version](https://img.shields.io/github/v/release/Nader999/subway-player?label=t%C3%A9l%C3%A9charger)](https://github.com/Nader999/subway-player/releases/latest)
+![VS Code](https://img.shields.io/badge/VS%20Code-1.80%2B-007ACC) ![Cursor](https://img.shields.io/badge/Cursor-compatible-black) [![Dernière version](https://img.shields.io/github/v/release/Nader999/code-surfer?label=t%C3%A9l%C3%A9charger)](https://github.com/Nader999/code-surfer/releases/latest)
 
 ## Installation
 
@@ -10,7 +10,7 @@ L'extension n'est pas (encore) sur le marketplace : elle s'installe à partir d'
 
 ### 1. Télécharger
 
-Va sur la page [**Releases**](https://github.com/Nader999/subway-player/releases/latest) et télécharge le fichier `subway-player-x.y.z.vsix` dans la section **Assets**.
+Va sur la page [**Releases**](https://github.com/Nader999/code-surfer/releases/latest) et télécharge le fichier `subway-player-x.y.z.vsix` dans la section **Assets**.
 
 ### 2. Installer dans VS Code
 
@@ -116,8 +116,8 @@ Formats : le `.webm` (VP9) et le `.mp4` (H.264) sont les plus sûrs. Les liens Y
 Prérequis : Node.js 18 ou plus.
 
 ```bash
-git clone https://github.com/Nader999/subway-player.git
-cd subway-player
+git clone https://github.com/Nader999/code-surfer.git
+cd code-surfer
 npm install
 npm run compile      # ou npm run watch
 npm run package      # produit subway-player-<version>.vsix

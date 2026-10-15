@@ -157,10 +157,10 @@
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nader999/subway-player.git"
+    "url": "https://github.com/Nader999/code-surfer.git"
   },
   "bugs": {
-    "url": "https://github.com/Nader999/subway-player/issues"
+    "url": "https://github.com/Nader999/code-surfer/issues"
   },
-  "homepage": "https://github.com/Nader999/subway-player#readme"
+  "homepage": "https://github.com/Nader999/code-surfer#readme"
 }
